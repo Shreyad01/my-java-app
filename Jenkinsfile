@@ -5,12 +5,15 @@ pipeline {
             steps {
                 echo 'Building the Java application...'
                 sh 'mvn clean package'
+                sh "${env.MAVEN_HOME}/bin/mvn clean install"
+
             }
         }
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                // Add your test commands here if you have tests
+                sh "${env.MAVEN_HOME}/bin/mvn clean install"
+
             }
         }
     }
